@@ -15,8 +15,8 @@ The traffic light cycle is as follows:
 
 This folder contains the following project files:
 
-* **Proteus_Circuit/**: Contains the Proteus simulation file (`.pdsprj`).
-* **Source_Code/**: Contains the C code from STM32CubeIDE.
+* **Proteus_Circuit**: Contains the Proteus simulation file (`.pdsprj`).
+* **Source_Code**: Contains the C code from STM32CubeIDE.
     * `main.c`: The main source file with the traffic light logic.
 
 ## 3. Schematic
