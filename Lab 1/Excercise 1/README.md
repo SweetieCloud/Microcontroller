@@ -4,7 +4,7 @@
 
 This exercise extends the basic blinking LED project by making both LEDs blink alternately.
 
-* Connect **LED-RED** to pin **PA5** and **LED-YELLOW** to pin **PA6**of the STM32F103C6 microcontroller.
+* Connect **LED-RED** to pin **PA5** and **LED-YELLOW** to pin **PA6** of the STM32F103C6 microcontroller.
 * Two LEDs should switch their states every 2 seconds.
 
 ## 2. Project Files
