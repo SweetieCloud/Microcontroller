@@ -17,7 +17,6 @@ This folder contains the following project files:
 
 ## 3. Schematic
 
-The following schematic shows the circuit connections for this exercise.
+The following schematic shows the circuit connections for this exercise. 
 
-_The caption of this figure is a downloadable link to the Proteus project file._
 
