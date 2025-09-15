@@ -3,10 +3,8 @@
 ## 1. Requirements
 
 This exercise aims to simulate a traffic light using three LEDs with specific timings.
-
-* A **LED-GREEN** is added to the circuit and connected to pin **PA7** of the STM32F103C6 microcontroller.
-* The LEDs (RED on PA5, YELLOW on PA6, and GREEN on PA7) will follow a specific blinking sequence and duration to simulate a traffic light cycle.
-* The allowed delay function is **HAL_Delay(1000)**, with no other `HAL_Delay` functions permitted.
+* Connect **LED-RED** to pin **PA5**,**LED-YELLOW** to pin **PA6** and **LED-GREEN** to pin **PA7** of the STM32F103C6 microcontroller.
+* Three LEDs will follow a specific blinking sequence and duration to simulate a traffic light cycle.
 
 The traffic light cycle is as follows:
 * **RED** light: **5 seconds**
@@ -23,11 +21,7 @@ This folder contains the following project files:
 
 ## 3. Schematic
 
-The following schematic shows the circuit connections for this exercise. The green LED is connected to pin PA7 of the STM32F103C6.
-
-!
-
-_The caption of this figure is a downloadable link to the Proteus project file._
+The following schematic shows the circuit connections for this exercise. 
 
 ## 4. Source Code
 
