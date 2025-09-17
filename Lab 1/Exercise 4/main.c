@@ -68,16 +68,16 @@ void display7SEG(int num)
     // Common-anode 7-segment display
     // a-g segments connected to PB0-PB6
     uint16_t segments[] = {
-        0x3F, // 0
-        0x06, // 1
-        0x5B, // 2
-        0x4F, // 3
-        0x66, // 4
-        0x6D, // 5
-        0x7D, // 6
-        0x07, // 7
-        0x7F, // 8
-        0x6F  // 9
+        0x3F, 
+        0x06, 
+        0x5B, 
+        0x4F, 
+        0x66, 
+        0x6D, 
+        0x7D, 
+        0x07, 
+        0x7F, 
+        0x6F  
     };
 
     // Invert the segments for common-anode logic
@@ -284,3 +284,4 @@ void assert_failed(uint8_t *file, uint32_t line)
 #endif /* USE_FULL_ASSERT */
 
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
+
