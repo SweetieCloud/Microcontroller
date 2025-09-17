@@ -1,4 +1,4 @@
-# Exercise 4: Extended Four-Way Traffic Light with Countdown
+# Exercise 5: Extended Four-Way Traffic Light with Countdown
 
 ## 1. Requirements
 
