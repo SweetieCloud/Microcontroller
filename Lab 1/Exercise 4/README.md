@@ -2,9 +2,9 @@
 
 ## 1. Requirements
 
-This exercise builds upon Exercise 3 by adding a 7-segment display to show the countdown timer for a selected traffic light.
-* Connect 12 LEDs to the GPIOA pins of the STM32F103C6 microcontroller to represent the lights for four intersections.
-* Connect a 7-segment common-anode display to the GPIOB pins PB0 through PB6.
+This exercise builds upon Exercise 3 by adding a **7-segment display** to show the countdown timer for a selected traffic light.
+* Connect **12 LEDs** to the GPIOA pins of the **STM32F103C6** microcontroller to represent the lights for four intersections.
+* Connect a 7-segment common-anode display to the GPIOB pins **PB0** through **PB6**.
 * The traffic lights for each pair of opposing intersections will operate in sync.
 
 The traffic light sequence is as follows:
