@@ -25,7 +25,7 @@ The following schematic shows the circuit connections for this exercise.
 
 ## 4. Source Code
 
-The following code is implemented inside the `while(1)` loop in `main.c`, using a counter to manage the timing as required.
+The following code is implemented in `main.c`, using a counter to manage the timing as required.
 
 **7-Segment Display Function**
 ```c
