@@ -74,7 +74,7 @@ void setNumberOnClock(int num)
         // Chân PA4 tương ứng với num = 0
         // Chân PA15 tương ứng với num = 11
         uint16_t pin_to_set = (1 << (4 + num));
-        HAL_GPIO_WritePin(GPIOA, pin_to_set, GPIO_PIN_SET);
+        HAL_GPIO_WritePin(GPIOA, pin_to_set, GPIO_PIN_RESET);
     }
 }
 
@@ -229,3 +229,4 @@ void assert_failed(uint8_t *file, uint32_t line)
 #endif /* USE_FULL_ASSERT */
 
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
+
