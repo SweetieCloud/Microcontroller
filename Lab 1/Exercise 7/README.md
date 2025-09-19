@@ -16,7 +16,7 @@ void clearAllClock()
 {
     // GPIO_PIN_4 đến GPIO_PIN_15 tương ứng với 12 đèn LED
     // 0xFFF0 là mask bit để chọn tất cả các chân này
-    HAL_GPIO_WritePin(GPIOA, 0xFFF0, GPIO_PIN_RESET);
+    HAL_GPIO_WritePin(GPIOA, 0xFFF0, GPIO_PIN_SET);
 }
 /* USER CODE END 0 */
 
