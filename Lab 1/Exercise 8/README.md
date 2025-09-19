@@ -25,7 +25,7 @@ void setNumberOnClock(int num)
         // Chân PA4 tương ứng với num = 0
         // Chân PA15 tương ứng với num = 11
         uint16_t pin_to_set = (1 << (4 + num));
-        HAL_GPIO_WritePin(GPIOA, pin_to_set, GPIO_PIN_SET);
+        HAL_GPIO_WritePin(GPIOA, pin_to_set, GPIO_PIN_RESET);
     }
 }
 /* USER CODE END 0 */
