@@ -87,7 +87,7 @@ void display7SEG1(int num)
 }
 /* USER CODE END 4 */
 ```
-**Main `while(1)` Loop**
+**main** `while(1)` **Loop**
 ```c
 /* USER CODE BEGIN WHILE */
 while (1)
