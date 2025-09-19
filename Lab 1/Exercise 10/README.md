@@ -10,7 +10,7 @@ Use the functions **_clearAllClock()_, _setNumberOnClock()_, and _clearNumberOnC
 This folder contains the following project files:
 * **Proteus_Circuit**: Contains the Proteus simulation file (`.pdsprj`).
 * **Source_Code**: Contains the C code from STM32CubeIDE.
-                 * `main.c`:  The main source file with the logic to run the clock.
+    * `main.c`:  The main source file with the logic to run the clock.
 
 ## 3. Schematic
 The schematic for this exercise remains the same as in Exercise 6, 7, 8, and 9.
