@@ -8,8 +8,7 @@ The LEDs should then turn off sequentially.
 ## 2. Source Code
 The following code is implemented in `main.c`, using a for loop to manage the sequential turn-off of the LEDs.
 **main** `while(1)` **Loop**
-C
-
+```c
 /* USER CODE BEGIN WHILE */
   while (1)
   {
