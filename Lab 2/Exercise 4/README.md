@@ -35,6 +35,7 @@ No changes to the **Proteus circuit** are required.
 ## 4. Source Code Implementation
 
 **Global Variables Update `/* USER CODE BEGIN PV */`**
+
 The `scan_counter` is changed **from 50 → 25** to reduce the switching time per LED from **500 ms → 250 ms**.  
 
 ```c
