@@ -1,5 +1,7 @@
 # Exercise 3: Code Refactoring and Function Encapsulation
+
 ## 1. Requirements
+
 The goal of this exercise is to implement a code refactoring strategy by encapsulating the 7-segment LED scanning logic into a dedicated, reusable function named **`update7SEG(int index)`**.
 
 This function is responsible for:
@@ -33,6 +35,7 @@ This folder contains the following project files:
 
 ## 3. Source Code Implementation
 **New Function: update7SEG(int index) `/* USER CODE BEGIN 0 */`**
+
 This function encapsulates the scanning and display process for the four LED digits (12:30).
 ```c
 /* USER CODE BEGIN 0 */
@@ -52,6 +55,7 @@ void update7SEG(int index) {
 /* USER CODE END 0 */
 ```
 **Updated Interrupt Callback `/* USER CODE BEGIN 4 */`**
+
 The callback is simplified to manage counters and call the new function.
 ```c
 /* USER CODE BEGIN 4 */
