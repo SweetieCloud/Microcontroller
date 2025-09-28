@@ -56,6 +56,7 @@ int scan_counter = 50;
 int blink_counter = 100;       
 int led_index = 0;           
 /* USER CODE END PV */
+```
 
 **Interrupt Callback** `/* USER CODE BEGIN 4 */`
 
