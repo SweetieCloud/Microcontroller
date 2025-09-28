@@ -34,12 +34,12 @@ The schematic is an expansion of Exercise 1, using four 7-segment LEDs (Common A
 | Component | Function | MCU Pin |
 | :--- | :--- | :--- |
 | **Segments (a-g)** | Tín hiệu hiển thị số | **PB0 - PB6** |
-| **Enable 1 (E1)** | Quét LED 7 đoạn thứ 1 | **PA6** (Qua Transistor PNP) |
-| **Enable 2 (E2)** | Quét LED 7 đoạn thứ 2 | **PA7** (Qua Transistor PNP) |
-| **Enable 3 (E3)** | Quét LED 7 đoạn thứ 3 | **PA8** (Qua Transistor PNP) |
-| **Enable 4 (E4)** | Quét LED 7 đoạn thứ 4 | **PA9** (Qua Transistor PNP) |
-| **DOT** | Indicator LED 1 (DOT) | **PA4** (Độc lập) |
-| **LED Red** | Indicator LED 2 (LED1) | **PA5** (Độc lập) |
+| **Enable 1 (E1)** | Scan the 1st 7-segment LED | **PA6** (Transistor PNP) |
+| **Enable 2 (E2)** | Scan the 2nd 7-segment LED | **PA7** (Transistor PNP) |
+| **Enable 3 (E3)** | Scan the 3rd 7-segment LED | **PA8** (Transistor PNP) |
+| **Enable 4 (E4)** | Scan the 4th 7-segment LED | **PA9** (Transistor PNP) |
+| **DOT** | Indicator LED 1 (DOT) | **PA4** |
+| **LED Red** | Indicator LED 2 (LED1) | **PA5**  |
 
 ---
 
@@ -47,7 +47,7 @@ The schematic is an expansion of Exercise 1, using four 7-segment LEDs (Common A
 
 The core logic for controlling the 4-digit display and the indicator LEDs is handled within the `HAL_TIM_PeriodElapsedCallback` function, which is executed every $10\text{ms}$.
 
-### Global Variables (`/* USER CODE BEGIN PV */`)
+**Global Variables** `/* USER CODE BEGIN PV */` 
 
 ```c
 /* USER CODE BEGIN PV */
