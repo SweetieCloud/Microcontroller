@@ -22,7 +22,7 @@ This standardizes the code, making the **`HAL_TIM_PeriodElapsedCallback`** funct
 | :--- | :--- | 
 | update7SEG(int index) | Handles the entire display logic (data and enable control).
 | HAL_TIM_PeriodElapsedCallback | Handles time counting and calling update7SEG once per scan cycle.
-
+---
 ## 2. Project Files
 
 This folder contains the following project files:
