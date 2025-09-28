@@ -55,6 +55,7 @@ void update7SEG(int index) {
 **Updated Interrupt Callback**
 
 Timer interrupt only manages counters and calls the refactored function.
+```c
 /* USER CODE BEGIN 4 */
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
     scan_counter--;
