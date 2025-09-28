@@ -31,6 +31,7 @@ This function encapsulates the scanning and display logic for the four 7-segment
 ## 3. Source Code Implementation
 
 ### New Function `update7SEG(int index)`  
+
 This function replaces inline display code with a reusable block.
 
 ```c
@@ -50,3 +51,24 @@ void update7SEG(int index) {
     HAL_GPIO_WritePin(GPIOA, LED_ENABLE_PINS[index % MAX_LED], GPIO_PIN_RESET);
 }
 /* USER CODE END 0 */
+```
+**Updated Interrupt Callback**
+
+Timer interrupt only manages counters and calls the refactored function.
+/* USER CODE BEGIN 4 */
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
+    scan_counter--;
+    if (scan_counter <= 0) {
+        scan_counter = 50;  // 500ms switching time from Exercise 2
+        index_led = (index_led + 1) % 4;
+        update7SEG(index_led);
+    }
+
+    blink_counter--;
+    if (blink_counter <= 0) {
+        blink_counter = 100; // 1000ms = 1s
+        HAL_GPIO_TogglePin(GPIOA, DOT_Pin);
+        HAL_GPIO_TogglePin(GPIOA, LED1_Pin);
+    }
+}
+/* USER CODE END 4 */
