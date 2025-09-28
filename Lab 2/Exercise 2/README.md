@@ -33,7 +33,7 @@ The schematic is an expansion of Exercise 1, using four 7-segment LEDs (Common A
 
 | Component | Function | MCU Pin |
 | :--- | :--- | :--- |
-| **Segments (a-g)** | Tín hiệu hiển thị số | **PB0 - PB6** |
+| **Segments (a-g)** | Digital display signal | **PB0 - PB6** |
 | **Enable 1 (E1)** | Scan the 1st 7-segment LED | **PA6** (Transistor PNP) |
 | **Enable 2 (E2)** | Scan the 2nd 7-segment LED | **PA7** (Transistor PNP) |
 | **Enable 3 (E3)** | Scan the 3rd 7-segment LED | **PA8** (Transistor PNP) |
@@ -57,3 +57,44 @@ int scan_counter = 50;          // Bộ đếm 500ms (50 * 10ms) cho việc qué
 int blink_counter = 100;        // Bộ đếm 1000ms (100 * 10ms) cho việc nhấp nháy DOT/LED Red
 int led_index = 0;              // Chỉ số của LED 7 đoạn đang được quét (0, 1, 2, 3)
 /* USER CODE END PV */
+
+**Interrupt Callback** `/* USER CODE BEGIN 4 */`
+
+```c
+/* USER CODE BEGIN 4 */
+
+// Mảng chứa các chân Enable (E1 đến E4)
+const uint16_t LED_ENABLE_PINS[] = {E1_Pin, E2_Pin, E3_Pin, E4_Pin}; 
+
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
+    // --- Logic 1: Điều khiển Quét LED (500ms/LED) ---
+    scan_counter--;
+    if (scan_counter <= 0) {
+        scan_counter = 50; // Đặt lại bộ đếm cho 500ms
+
+        // 1. Tắt LED 7 đoạn đang bật (HIGH cho PNP)
+        HAL_GPIO_WritePin(GPIOA, LED_ENABLE_PINS[led_index], GPIO_PIN_SET); 
+        
+        // 2. Chuyển sang LED 7 đoạn kế tiếp
+        led_index = (led_index + 1) % 4; // Chuyển đổi vòng tròn 0 -> 1 -> 2 -> 3 -> 0
+
+        // 3. Hiển thị giá trị mới (1, 2, 3 hoặc 0)
+        display7SEG(seg_data[led_index]); 
+
+        // 4. Bật LED 7 đoạn mới (LOW cho PNP)
+        HAL_GPIO_WritePin(GPIOA, LED_ENABLE_PINS[led_index], GPIO_PIN_RESET);
+    }
+    
+    // --- Logic 2: Nhấp nháy DOT và LED Red (1000ms = 1 giây) ---
+    blink_counter--;
+    if (blink_counter <= 0) {
+        blink_counter = 100; // Đặt lại bộ đếm cho 1000ms
+        
+        // Đảo trạng thái của DOT_Pin (PA4)
+        HAL_GPIO_TogglePin(GPIOA, DOT_Pin);
+        
+        // Đảo trạng thái của LED1_Pin (PA5)
+        HAL_GPIO_TogglePin(GPIOA, LED1_Pin);
+    }
+}
+/* USER CODE END 4 */
