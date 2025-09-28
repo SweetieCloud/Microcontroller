@@ -36,7 +36,7 @@ This folder contains the following project files:
 ## 3. Source Code Implementation
 **New Function: update7SEG(int index) `/* USER CODE BEGIN 0 */`**
 
-This function encapsulates the scanning and display process for the four LED digits (12:30).
+This function encapsulates the scanning and display process for the four LED digits.
 ```c
 /* USER CODE BEGIN 0 */
 void update7SEG(int index) {
