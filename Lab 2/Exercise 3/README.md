@@ -41,13 +41,8 @@ int led_buffer[4] = {1, 2, 3, 4};
 int index_led = 0;
 
 void update7SEG(int index) {
-    // 1. Turn OFF all 4 Enable pins (assume PNP transistors → HIGH = OFF)
     HAL_GPIO_WritePin(GPIOA, E1_Pin | E2_Pin | E3_Pin | E4_Pin, GPIO_PIN_SET);
-
-    // 2. Display digit value from buffer
     display7SEG(led_buffer[index % MAX_LED]);
-
-    // 3. Enable the corresponding digit (LOW = ON for PNP transistor)
     HAL_GPIO_WritePin(GPIOA, LED_ENABLE_PINS[index % MAX_LED], GPIO_PIN_RESET);
 }
 /* USER CODE END 0 */
@@ -60,14 +55,14 @@ Timer interrupt only manages counters and calls the refactored function.
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
     scan_counter--;
     if (scan_counter <= 0) {
-        scan_counter = 50;  // 500ms switching time from Exercise 2
+        scan_counter = 50;  
         index_led = (index_led + 1) % 4;
         update7SEG(index_led);
     }
 
     blink_counter--;
     if (blink_counter <= 0) {
-        blink_counter = 100; // 1000ms = 1s
+        blink_counter = 100; 
         HAL_GPIO_TogglePin(GPIOA, DOT_Pin);
         HAL_GPIO_TogglePin(GPIOA, LED1_Pin);
     }
