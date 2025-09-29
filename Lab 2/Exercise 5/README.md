@@ -3,10 +3,10 @@
 ## 1. Requirements
 The goal of this exercise is to implement a **24-hour digital clock** displaying **Hour** and **Minute** in the `HH:MM` format on the **4 LED 7-segment display**.  
 
-- **Time Logic**: The clock's time logic (second → minute → hour rollover) must be implemented within the `main` function's `while(1)` loop.  
-- **Synchronization**: Time advancement is synchronized to **1 second** using the blocking function `HAL_Delay(1000)`.  
-- **Data Conversion**: A new function `updateClockBuffer()` must be implemented to convert the integer values of `hour` and `minute` into the 4 individual digits required for the LED display buffer (`H1, H2, M1, M2`). This ensures single-digit values (e.g., `8`) are correctly displayed with a leading zero (e.g., `08`).  
-- **Display Scanning**: The display scanning mechanism configured in **Exercise 4** (`T_S = 250ms`, `T_total = 1s`) must remain active in the **Timer Interrupt** to provide a flicker-free display.  
+**Time Logic**: The clock's time logic (second → minute → hour rollover) must be implemented within the `main` function's `while(1)` loop.  
+**Synchronization**: Time advancement is synchronized to **1 second** using the blocking function `HAL_Delay(1000)`.  
+**Data Conversion**: A new function `updateClockBuffer()` must be implemented to convert the integer values of `hour` and `minute` into the 4 individual digits required for the LED display buffer. This ensures single-digit values are correctly displayed with a leading zero.  
+**Display Scanning**: The display scanning mechanism configured in **Exercise 4** (`T_S = 250ms`, `T_total = 1s`) must remain active in the **Timer Interrupt** to provide a flicker-free display.  
 
 ### Function Responsibilities
 
