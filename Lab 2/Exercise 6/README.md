@@ -29,7 +29,7 @@ This technique reduces the processing burden on the main loop and enhances the s
 
 ## 3. Source Code Implementation
 
-### Software Timer Structure `/* USER CODE BEGIN 0 */`
+**Timer Structure**
 
 The timer variables and helper functions are defined outside the main loop, managed by the Timer Interrupt.
 
