@@ -35,13 +35,9 @@ The two 7-segment LEDs are connected to the microcontroller as follows:
 ## 4. Source Code
 The solution is implemented in the main.c file. The logic for displaying the numbers and switching between the LEDs is handled within the  `void display7SEG(int num)` and `HAL_TIM_PeriodElapsedCallback` functions.
 ```c
-/* USER CODE BEGIN PV */
 int counter_led = 50;
 int led_index = 0;
-/* USER CODE END PV */
-/* USER CODE BEGIN 0 */
 void display7SEG(int num) {
-    // Tắt tất cả các đoạn (segments)
     HAL_GPIO_WritePin(GPIOB, a_Pin|b_Pin|c_Pin|d_Pin|e_Pin|f_Pin|g_Pin, GPIO_PIN_RESET);
     switch (num) {
         case 0:
@@ -78,7 +74,7 @@ void display7SEG(int num) {
             break;
     }
 }
-/* USER CODE END 0 */
+
 /* USER CODE BEGIN 4 */
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
   counter_led--;
@@ -87,14 +83,10 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
     led_index = !led_index;
     HAL_GPIO_WritePin(GPIOA, E1_Pin | E2_Pin, GPIO_PIN_SET);
     if (led_index == 0) {
-      // Hiển thị số 1 trên màn hình thứ nhất
       display7SEG(1);
-      // Bật màn hình 1 
       HAL_GPIO_WritePin(GPIOA, E1_Pin, GPIO_PIN_RESET);
     } else {
-      // Hiển thị số 2 trên màn hình thứ hai
       display7SEG(2);
-      // Bật màn hình 2 
       HAL_GPIO_WritePin(GPIOA, E2_Pin, GPIO_PIN_RESET);
     }
   }
@@ -102,8 +94,6 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
 /* USER CODE END 4 */
 int main(void)
 {
-  /* USER CODE BEGIN 1 */
-  /* USER CODE END 1 */
   HAL_Init();
   /* USER CODE BEGIN Init */
 
@@ -118,15 +108,10 @@ int main(void)
 
   MX_GPIO_Init();
   MX_TIM2_Init();
-  /* USER CODE BEGIN 2 */
   HAL_TIM_Base_Start_IT (& htim2 );
-  /* USER CODE END 2 */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-    /* USER CODE END WHILE */
-
-    /* USER CODE BEGIN 3 */
   }
-  /* USER CODE END 3 */
+  /* USER CODE END WHILE */
 }
