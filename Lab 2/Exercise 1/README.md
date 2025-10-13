@@ -111,7 +111,22 @@ int main(void)
   HAL_TIM_Base_Start_IT (& htim2 );
   /* USER CODE BEGIN WHILE */
   while (1)
-  {
-  }
+  {}
   /* USER CODE END WHILE */
 }
+```
+## 5. Short Question Answer
+
+**Short question: What is the frequency of the scanning process?**
+
+The frequency of the scanning process ($\mathbf{f}$) is the reciprocal of the total time required to display data on all LEDs ($\mathbf{T_{total}}$).
+
+1.  **Timer Interrupt Period ($\mathbf{T_{ngắt}$):** $10ms$ (from $8MHz / (7999+1) / (9+1)$).
+2.  **Switching Time ($\mathbf{T_S}$):** The time each individual LED is enabled is $\mathbf{50}$ interrupt cycles, as `counter_led` is set to 50:
+    $$\mathbf{T_S} = 50 \times 10ms = 500ms \text{ hay } 0.5s \text{.}$$
+3.  **Total Scanning Period ($\mathbf{T_{total}}$):** Since there are **2** 7-segment LEDs:
+    $$\mathbf{T_{total}} = 2 \times T_S = 2 \times 0.5s = 1s \text{.}$$
+4.  **Scanning Frequency ($\mathbf{f}$):**
+    $$\mathbf{f} = 1 / T_{total} = 1 / 1s = \mathbf{1Hz} \text{.}$$
+
+[cite_start]**Answer:** The frequency of the scanning process is $\mathbf{1Hz}$ because each LED is turned ON for $0.5s$, and the total time to scan both LEDs is $1s$[cite: 297, 298].
