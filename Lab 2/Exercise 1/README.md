@@ -48,7 +48,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
             display7SEG(2);
             HAL_GPIO_WritePin(GPIOA, E2_Pin, GPIO_PIN_RESET);
        }
-   }
+    }
 }
 ```
 ## 5. Short Question Answer
