@@ -121,7 +121,7 @@ int main(void)
 
 The frequency of the scanning process ($f$) is the reciprocal of the total time required to display data on all LEDs ($T_{total}$).
 
-1.  **Timer Interrupt Period ($T_{ngắt}$):** $10ms$ (from $8MHz / (7999+1) / (9+1)$).
+1.  **Timer Interrupt Period:** $10ms$.
 2.  **Switching Time ($T_S$):** The time each individual LED is enabled is 50 interrupt cycles, as `counter_led` is set to 50:
     $$T_S = 50 \times 10ms = 500ms \text{ hay } 0.5s \text{.}$$
 3.  **Total Scanning Period ($T_{total}$):** Since there are 2 7-segment LEDs:
