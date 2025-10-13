@@ -33,7 +33,7 @@ The two 7-segment LEDs are connected to the microcontroller as follows:
 * Enable Pins: The common anode pins of each LED are controlled by **PNP transistors**, which are driven by pins **PA6** and **PA7**. 
 
 ## 4. Source Code
-The solution is implemented in the main.c file. The logic for displaying the numbers and switching between the LEDs is handled within the `HAL_TIM_PeriodElapsedCallback` function.
+The solution is implemented in the `main.c` file. The logic for displaying the numbers and switching between the LEDs is handled within the `HAL_TIM_PeriodElapsedCallback` function.
 ```c
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
    counter_led--;
