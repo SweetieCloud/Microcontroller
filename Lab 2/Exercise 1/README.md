@@ -36,19 +36,19 @@ The two 7-segment LEDs are connected to the microcontroller as follows:
 The solution is implemented in the main.c file. The logic for displaying the numbers and switching between the LEDs is handled within the `HAL_TIM_PeriodElapsedCallback` function.
 ```c
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
-  counter_led--;
-  if (counter_led <= 0) {
-    counter_led = 50;
-    led_index = !led_index;
-    HAL_GPIO_WritePin(GPIOA, E1_Pin | E2_Pin, GPIO_PIN_SET);
-    if (led_index == 0) {
-      display7SEG(1);
-      HAL_GPIO_WritePin(GPIOA, E1_Pin, GPIO_PIN_RESET);
-    } else {
-      display7SEG(2);
-      HAL_GPIO_WritePin(GPIOA, E2_Pin, GPIO_PIN_RESET);
-    }
-  }
+   counter_led--;
+   if (counter_led <= 0) {
+       counter_led = 50;
+       led_index = !led_index;
+       HAL_GPIO_WritePin(GPIOA, E1_Pin | E2_Pin, GPIO_PIN_SET);
+       if (led_index == 0) {
+            display7SEG(1);
+            HAL_GPIO_WritePin(GPIOA, E1_Pin, GPIO_PIN_RESET);
+       } else {
+            display7SEG(2);
+            HAL_GPIO_WritePin(GPIOA, E2_Pin, GPIO_PIN_RESET);
+       }
+   }
 }
 ```
 ## 5. Short Question Answer
