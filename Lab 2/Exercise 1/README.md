@@ -33,49 +33,8 @@ The two 7-segment LEDs are connected to the microcontroller as follows:
 * Enable Pins: The common anode pins of each LED are controlled by **PNP transistors**, which are driven by pins **PA6** and **PA7**. 
 
 ## 4. Source Code
-The solution is implemented in the main.c file. The logic for displaying the numbers and switching between the LEDs is handled within the  `void display7SEG(int num)` and `HAL_TIM_PeriodElapsedCallback` functions.
+The solution is implemented in the main.c file. The logic for displaying the numbers and switching between the LEDs is handled within the `HAL_TIM_PeriodElapsedCallback` function.
 ```c
-int counter_led = 50;
-int led_index = 0;
-void display7SEG(int num) {
-    HAL_GPIO_WritePin(GPIOB, a_Pin|b_Pin|c_Pin|d_Pin|e_Pin|f_Pin|g_Pin, GPIO_PIN_RESET);
-    switch (num) {
-        case 0:
-            HAL_GPIO_WritePin(GPIOB, a_Pin|b_Pin|c_Pin|d_Pin|e_Pin|f_Pin, GPIO_PIN_SET);
-            break;
-        case 1:
-            HAL_GPIO_WritePin(GPIOB, b_Pin|c_Pin, GPIO_PIN_SET);
-            break;
-        case 2:
-            HAL_GPIO_WritePin(GPIOB, a_Pin|b_Pin|d_Pin|e_Pin|g_Pin, GPIO_PIN_SET);
-            break;
-        case 3:
-            HAL_GPIO_WritePin(GPIOB, a_Pin|b_Pin|c_Pin|d_Pin|g_Pin, GPIO_PIN_SET);
-            break;
-        case 4:
-            HAL_GPIO_WritePin(GPIOB, b_Pin|c_Pin|f_Pin|g_Pin, GPIO_PIN_SET);
-            break;
-        case 5:
-            HAL_GPIO_WritePin(GPIOB, a_Pin|c_Pin|d_Pin|f_Pin|g_Pin, GPIO_PIN_SET);
-            break;
-        case 6:
-            HAL_GPIO_WritePin(GPIOB, a_Pin|c_Pin|d_Pin|e_Pin|f_Pin|g_Pin, GPIO_PIN_SET);
-            break;
-        case 7:
-            HAL_GPIO_WritePin(GPIOB, a_Pin|b_Pin|c_Pin, GPIO_PIN_SET);
-            break;
-        case 8:
-            HAL_GPIO_WritePin(GPIOB, a_Pin|b_Pin|c_Pin|d_Pin|e_Pin|f_Pin|g_Pin, GPIO_PIN_SET);
-            break;
-        case 9:
-            HAL_GPIO_WritePin(GPIOB, a_Pin|b_Pin|c_Pin|d_Pin|f_Pin|g_Pin, GPIO_PIN_SET);
-            break;
-        default:
-            break;
-    }
-}
-
-/* USER CODE BEGIN 4 */
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
   counter_led--;
   if (counter_led <= 0) {
@@ -90,29 +49,6 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
       HAL_GPIO_WritePin(GPIOA, E2_Pin, GPIO_PIN_RESET);
     }
   }
-}
-/* USER CODE END 4 */
-int main(void)
-{
-  HAL_Init();
-  /* USER CODE BEGIN Init */
-
-  /* USER CODE END Init */
-
-  /* Configure the system clock */
-  SystemClock_Config();
-
-  /* USER CODE BEGIN SysInit */
-
-  /* USER CODE END SysInit */
-
-  MX_GPIO_Init();
-  MX_TIM2_Init();
-  HAL_TIM_Base_Start_IT (& htim2 );
-  /* USER CODE BEGIN WHILE */
-  while (1)
-  {}
-  /* USER CODE END WHILE */
 }
 ```
 ## 5. Short Question Answer
