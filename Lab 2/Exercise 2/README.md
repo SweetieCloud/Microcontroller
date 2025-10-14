@@ -58,7 +58,7 @@ int led_index = 0;
 /* USER CODE END PV */
 ```
 
-**Interrupt Callback** `/* USER CODE BEGIN 4 */`
+**HAL_TIM_PeriodElapsedCallback** `/* USER CODE BEGIN 4 */`
 
 ```c
 /* USER CODE BEGIN 4 */
