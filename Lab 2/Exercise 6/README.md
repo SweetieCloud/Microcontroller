@@ -90,3 +90,33 @@ while (1)
 }
 /* USER CODE END WHILE */
 ```
+## 5. Short Question Answers (Software Timer Analysis)
+
+The following answers analyze the behavior of the system based on changes to the initial `setTimer0()` call, given that the Timer Interrupt period (`TIMER_CYCLE`) is **10ms**.
+
+### Report 1: If `setTimer0(1000)` (line 1 of Program 1.8) is missing, what happens after that and why?
+
+If the initial call to `setTimer0(1000)` is missing, the clock logic inside the `while(1)` loop will **never execute**.
+
+* **What Happens:** The variables `timer0_counter` and `timer0_flag` will retain their initial values (typically `0` for global uninitialized variables).
+* **Why:** Since `timer0_counter` starts at $0$, the condition `if (timer0_counter > 0)` inside the `timer_run()` function will always be **false**. Consequently, `timer0_counter` will never decrement, and `timer0_flag` will never be set to $\mathbf{1}$. The main loop's check, `if (timer0_flag == 1)`, will therefore always fail, and the clock update logic (incrementing seconds, minutes, and hours) will be permanently bypassed.
+
+---
+
+### Report 2: If `setTimer0(1000)` is changed to `setTimer0(1)`, what happens after that and why?
+
+If `setTimer0(1)` is used, the system attempts to set the duration to $1\text{ms}$, causing the clock to update **almost instantaneously** or **update every $10\text{ms}$** (if using integer division).
+
+* **What Happens:** The clock will run $\mathbf{100}$ times faster than real-time. The `second` variable will update every $10\text{ms}$, meaning $100$ clock seconds pass for every $1$ real second.
+* **Why:** The `setTimer0(1)` call calculates the counter value: $$\text{timer0\_counter} = \lfloor 1\text{ms} / 10\text{ms} \rfloor = 0$$
+    Due to integer division resulting in 0, the timer flag may be set immediately or in the very next interrupt cycle. Since the flag is set every $\mathbf{10\text{ms}}$ (the interrupt frequency), the clock logic will execute every $10\text{ms}$, speeding up the time progression by a factor of 100.
+
+---
+
+### Report 3: If `setTimer0(1000)` is changed to `setTimer0(10)`, what is changed compared to the 2 first questions and why?
+
+Changing the duration to $10\text{ms}$ results in the clock running **100 times faster** than real-time, which is a predictable, extreme speed-up compared to the first two scenarios.
+
+* **What Happens:** The clock will update its time logic (incrementing the `second` variable) every $\mathbf{10\text{ms}}$. The display will show time racing by extremely fast.
+* **Why:** The `setTimer0(10)` call calculates the counter value: $$\text{timer0\_counter} = 10\text{ms} / 10\text{ms} = \mathbf{1}$$
+    The `timer\_run()` function will decrement this counter from $\mathbf{1}$ to $\mathbf{0}$ after exactly **one interrupt cycle** ($\mathbf{10\text{ms}}$). Since the timer is reset to $\mathbf{1}$ immediately after the flag is raised, the entire clock update logic runs every $\mathbf{10\text{ms}}$, causing the digital clock to speed up by a factor of 100.
