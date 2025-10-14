@@ -77,9 +77,7 @@ setTimer(1, 1000);
 /* USER CODE END 2 */
 
 /* USER CODE BEGIN WHILE */
-while (1)
-{
-    // --- Task 1: Clock Update Logic (Controlled by Timer 0) ---
+while (1){
     if (timer_flag[0] == 1) {
         second++; 
         if (second >= 60) {
@@ -100,7 +98,7 @@ while (1)
     if (timer_flag[1] == 1) {
         HAL_GPIO_TogglePin(GPIOA, DOT_Pin);
         HAL_GPIO_TogglePin(GPIOA, LED1_Pin);
-        setTimer(1, 1000); // Reset Timer 1 for the next 1s toggle
+        setTimer(1, 1000);  
     }
 }
 /* USER CODE END WHILE */
