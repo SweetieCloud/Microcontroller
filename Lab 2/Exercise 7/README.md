@@ -28,9 +28,7 @@ The global variables are updated to support an array of timers, and the redundan
 #define NO_OF_TIMERS 2
 int timer_counter[NO_OF_TIMERS] = {0};
 int timer_flag[NO_OF_TIMERS] = {0};
-int TIMER_CYCLE = 10; // 10ms interrupt cycle
-
-// Clock and Scanning variables (retained from Ex 6)
+int TIMER_CYCLE = 10;  
 int hour = 15, minute = 8, second = 50;
 int led_buffer[MAX_LED] = {1, 5, 0, 8}; 
 int scan_counter = 25; 
@@ -54,7 +52,6 @@ void timer_run() {
         }
     }
 }
-// ... updateClockBuffer() and display7SEG() are retained ...
 /* USER CODE END 0 */
 ```
 ### Updated Interrupt Callback (Blink Logic Removed) 
@@ -62,18 +59,13 @@ The code handling `blink_counter` and `HAL_GPIO_TogglePin` is removed, simplifyi
 ```c
 /* USER CODE BEGIN 4 */
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
-    // 1. Management of ALL Software Timers (Critical Path)
-    timer_run(); 
-
-    // 2. LED Scanning Logic (T_S = 250ms, MUST remain here for flicker-free display)
+    timer_run();  
     scan_counter--;
     if (scan_counter <= 0) {
         scan_counter = 25; 
         index_led = (index_led + 1) % MAX_LED;
         update7SEG(index_led);
     }
-    
-    // **NOTE: DOT/LED Blink Logic has been removed and moved to main loop.**
 }
 /* USER CODE END 4 */
 ```
@@ -102,11 +94,9 @@ while (1)
             hour = 0;
         }
         updateClockBuffer();
-        setTimer(0, 1000); // Reset Timer 0 for the next 1s tick
+        setTimer(0, 1000);  
     }
 
-    // --- Task 2: DOT/LED Red Blink Logic (Controlled by Timer 1) ---
-    // This logic was previously in the HAL_TIM_PeriodElapsedCallback
     if (timer_flag[1] == 1) {
         HAL_GPIO_TogglePin(GPIOA, DOT_Pin);
         HAL_GPIO_TogglePin(GPIOA, LED1_Pin);
