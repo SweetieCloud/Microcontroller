@@ -71,3 +71,21 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
     }
 }
 /* USER CODE END 4 */
+```
+
+
+**The calculation for $T_S$ and $f$ is detailed as follows:**
+
+The Timer 2 interrupt period ($T_{ngắt}$) is fixed at $10\text{ms}$. The switching time ($T_S$) for each individual LED is determined by the number of times the interrupt handler is executed before the display index is updated.
+
+$$\mathbf{T_S} = \text{scan\_counter} \times T_{ngắt}$$
+
+* **Original Configuration (Exercise 3):** $\text{scan\_counter} = 50$.
+    $$T_S = 50 \times 10\text{ms} = 500\text{ms}$$
+    $$f_{total} = 1 / (4 \times 500\text{ms}) = 0.5\text{Hz}$$
+
+* **New Configuration (Exercise 4):** To achieve $f_{total} = 1\text{Hz}$, the required total period is $1000\text{ms}$. Therefore, the required $T_S$ is $1000\text{ms} / 4 = 250\text{ms}$.
+    $$250\text{ms} = \text{scan\_counter} \times 10\text{ms}$$
+    $$\text{scan\_counter} = 250 / 10 = \mathbf{25}$$
+
+Thus, changing the $\mathbf{scan\_counter}$ from $\mathbf{50 \rightarrow 25}$ directly reduces the switching time per LED from $500\text{ms}$ to $250\text{ms}$, resulting in the desired $1\text{Hz}$ scanning frequency.
