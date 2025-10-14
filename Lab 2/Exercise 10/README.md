@@ -1,4 +1,4 @@
-# Exercise 10: LED Matrix Animation Optimization with VSync (Double Buffering)
+# Exercise 10: LED Matrix Animation Optimization 
 
 ## 1. Description and Objective
 
