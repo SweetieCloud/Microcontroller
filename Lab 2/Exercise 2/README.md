@@ -92,10 +92,10 @@ The frequency of the scanning process ($f$) is the reciprocal of the total time 
 
 1.  **Timer Interrupt Period:** $10ms$.
 2.  **Switching Time ($T_S$):** The time each individual LED is enabled is 50 interrupt cycles, as `counter_led` is set to 50:
-    $$T_S = 50 \times 10ms = 500ms \text{ hay } 0.5s \text{.}$$
+    $$T_S = 50 \times 10ms = 500ms (0.5s) \text{.}$$
 3.  **Total Scanning Period ($T_{total}$):** Since there are two 7-segment LEDs:
     $$T_{total} = 4 \times T_S = 4 \times 0.5s = 2s \text{.}$$
 4.  **Scanning Frequency ($f$):**
     $$f = 1 / T_{total} = 1 / 2s = 0.5Hz \text{.}$$
 
-[cite_start]Answer: The frequency of the scanning process is **0.5Hz**[cite: 297, 298].
+**Answer**: The frequency of the scanning process is **0.5Hz**.
