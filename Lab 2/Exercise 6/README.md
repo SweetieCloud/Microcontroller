@@ -59,6 +59,18 @@ The `timer_run()` function is called at the highest frequency (every 10ms) to en
 /* USER CODE BEGIN 4 */
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
     timer_run(); 
+    scan_counter--;
+    if (scan_counter <= 0) {
+        scan_counter = 25; 
+        index_led = (index_led + 1) % MAX_LED;
+        update7SEG(index_led);
+    }
+    blink_counter--;
+    if (blink_counter <= 0) {
+        blink_counter = 100;
+        HAL_GPIO_TogglePin(GPIOA, DOT_Pin);
+        HAL_GPIO_TogglePin(GPIOA, LED1_Pin);
+    }
 }
 /* USER CODE END 4 */
 ```
