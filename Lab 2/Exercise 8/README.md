@@ -2,7 +2,7 @@
 
 ## 1. Requirements
 
-The goal of this exercise is to finalize the interrupt optimization process by moving the last remaining application logic—**LED Scanning**—out of the $\mathbf{HAL\_TIM\_PeriodElapsedCallback}$ function.
+The goal of this exercise is to finalize the interrupt optimization process by moving the last remaining application logic—**LED Scanning**—out of the `HAL_TIM_PeriodElapsedCallback` function.
 
 * **Software Timer Expansion:** The system uses $\mathbf{three}$ independent Software Timers: $\mathbf{Timer 0}$ (Clock), $\mathbf{Timer 1}$ (Blink), and $\mathbf{Timer 2}$ (Scan).
 * **Optimal Interrupt:** The interrupt handler is reduced to its single core purpose: **managing the software timers** (calling `timer_run()`).
