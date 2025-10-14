@@ -40,7 +40,7 @@ The `scan_counter` is changed **from 50 → 25** to reduce the switching time pe
 
 ```c
 /* USER CODE BEGIN PV */
-int seg_data[4] = {1, 2, 3, 0}; 
+int seg_data[4] = {1, 2, 3, 4}; 
 int scan_counter = 25;          
 int blink_counter = 100;        
 int led_index = 0;              
