@@ -96,7 +96,7 @@ The following answers analyze the behavior of the system based on changes to the
 
 ---
 
-### Report 1: If `setTimer0(1000)` (line 1 of Program 1.8) is missing, what happens after that and why?
+**Report 1: If `setTimer0(1000)` (line 1 of Program 1.8) is missing, what happens after that and why?**
 
 If the initial call to `setTimer0(1000)` is missing, the clock logic inside the `while(1)` loop will **never execute**.
 
@@ -120,7 +120,7 @@ will therefore always fail, and the clock update logic (incrementing seconds, mi
 
 ---
 
-### Report 2: If `setTimer0(1000)` is changed to `setTimer0(1)`, what happens after that and why?
+**Report 2: If `setTimer0(1000)` is changed to `setTimer0(1)`, what happens after that and why?**
 
 If `setTimer0(1)` is used, the system attempts to set the duration to `1ms`, causing the clock to update **almost instantaneously** or **update every 10ms** (if using integer division).
 
@@ -138,7 +138,7 @@ Due to integer division resulting in `0`, the timer flag may be set immediately 
 
 ---
 
-### Report 3: If `setTimer0(1000)` is changed to `setTimer0(10)`, what is changed compared to the 2 first questions and why?
+**Report 3: If `setTimer0(1000)` is changed to `setTimer0(10)`, what is changed compared to the 2 first questions and why?**
 
 Changing the duration to `10ms` results in the clock running **100 times faster** than real-time, which is a predictable, extreme speed-up compared to the first two scenarios.
 
