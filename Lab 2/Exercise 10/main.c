@@ -21,10 +21,6 @@ int scan_counter = 25;
 int blink_counter = 100;
 int index_led = 0;
 
-
-
-
-
 // ==== LED Matrix Variables (Tối ưu với VSync Double Buffering) ====
 int index_led_matrix = 0;
 int animation_counter = 5;
@@ -37,14 +33,6 @@ uint8_t matrix_buffer_B[MAX_LED_MATRIX] = {0};
 
 uint8_t *current_display_buffer = matrix_buffer_A;
 uint8_t *current_draw_buffer = matrix_buffer_B;
-
-//(draw buffer) buffer đang vẽ (chuẩn bị frame mới)
-
-
-
-
-
-
 
 // Cờ báo hiệu khi một frame mới đã được vẽ xong và sẵn sàng để tráo đổi
 // "volatile" là từ khóa quan trọng để trình biên dịch không tối ưu hóa biến này sai cách
@@ -118,30 +106,15 @@ void update7SEG(int index){
 }
 
 // ===== LED Matrix (Tối ưu với VSync) =====
-
-
-
-
-
-
-
-
-				// Hàm animation chỉ tính toán và bật cờ, không tráo đổi buffer
-				void updateScrollingAnimation() {
-					for (int i = 0; i < MAX_LED_MATRIX; i++) {
-						current_draw_buffer[i] = (current_display_buffer[i] >> 1) | (current_display_buffer[i] << 7);
-					}
-					// Sau khi vẽ xong, bật cờ báo hiệu frame mới đã sẵn sàng
-					frame_is_ready = 1;
-				}
-
-
-
-
-
-
-
-
+// Hàm animation chỉ tính toán và bật cờ, không tráo đổi buffer
+				
+void updateScrollingAnimation() {				
+	for (int i = 0; i < MAX_LED_MATRIX; i++) {
+		current_draw_buffer[i] = (current_display_buffer[i] >> 1) | (current_display_buffer[i] << 7);
+	}
+	// Sau khi vẽ xong, bật cờ báo hiệu frame mới đã sẵn sàng
+	frame_is_ready = 1;
+}
 
 // Hàm quét ma trận (Không thay đổi)
 void updateLEDMatrix(int colIndex) {
@@ -276,27 +249,15 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
 
     // Quét ma trận LED và thực hiện VSync
     updateLEDMatrix(index_led_matrix);
-
-
-
-
-
-
-
-						// Nếu frame mới đã sẵn sàng VÀ chúng ta vừa quét xong cột cuối cùng (cột 7)
-						if (frame_is_ready == 1 && index_led_matrix == 7) {
-							// Đây là thời điểm an toàn để tráo đổi buffer
-							uint8_t *temp = current_display_buffer;
-							current_display_buffer = current_draw_buffer;
-							current_draw_buffer = temp;
-							// Hạ cờ xuống, báo hiệu đã cập nhật xong
-							frame_is_ready = 0;
-						}
-
-
-
-
-
+	// Nếu frame mới đã sẵn sàng VÀ chúng ta vừa quét xong cột cuối cùng (cột 7)
+	if (frame_is_ready == 1 && index_led_matrix == 7) {
+		// Đây là thời điểm an toàn để tráo đổi buffer
+		uint8_t *temp = current_display_buffer;
+		current_display_buffer = current_draw_buffer;
+		current_draw_buffer = temp;
+		// Hạ cờ xuống, báo hiệu đã cập nhật xong
+		frame_is_ready = 0;
+	}
     index_led_matrix = (index_led_matrix + 1) % MAX_LED_MATRIX;
 }
 
@@ -304,3 +265,4 @@ void Error_Handler(void){
   __disable_irq();
   while (1) {}
 }
+
