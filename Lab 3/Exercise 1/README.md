@@ -48,8 +48,7 @@ void update7SEG(int index) {
     // 3. BẬT chỉ chân Enable tương ứng với index
     HAL_GPIO_WritePin(GPIOA, LED_ENABLE_PINS[index % MAX_LED], GPIO_PIN_RESET);
 }
-``` |
-
+``` 
 ---
 
 ## 4. Báo cáo Chính (Nơi tập trung logic)
@@ -64,5 +63,6 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
     timer_run(); // CHỈ CÒN DUY NHẤT LỆNH NÀY
 }
 /* USER CODE END 4 */
-``` |
-| **`main()` (`while(1)`)** | Báo cáo cần trình bày phần `while(1)` hoàn chỉnh với 3 khối `if (timer_flag[index] == 1)` để thực thi tất cả logic (Clock, Blink, Scan). |
+``` 
+**`main()` (`while(1)`)** 
+Báo cáo cần trình bày phần `while(1)` hoàn chỉnh với 3 khối `if (timer_flag[index] == 1)` để thực thi tất cả logic (Clock, Blink, Scan). 
