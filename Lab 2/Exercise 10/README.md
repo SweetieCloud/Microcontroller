@@ -30,7 +30,7 @@ volatile uint8_t frame_is_ready = 0;
 int animation_counter = 20;
 ```
 ### `Function updateScrollingAnimation()`
-
+```c
 void updateScrollingAnimation() {
     for (int i = 0; i < MAX_LED_MATRIX; i++) {
         // Circular right shift: (>> 1) shifts right, while (| << 7) wraps the MSB to the LSB
@@ -39,7 +39,7 @@ void updateScrollingAnimation() {
     // Signal that the new frame is ready for display (VSync signal)
     frame_is_ready = 1;
 }
-
+```
 ### `HAL_TIM_PeriodElapsedCallback (Interrupt Handler)`
 ```c
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
