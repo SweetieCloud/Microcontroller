@@ -10,7 +10,7 @@ The goal of this exercise is to finalize the interrupt optimization process by m
 
 ### Final Task Allocation
 
-| Timer Index | Duration | Tần suất | Task Executed in $\mathbf{while(1)}$ |
+| Timer Index | Duration | Frequency | Task Executed in $\mathbf{while(1)}$ |
 | :--- | :--- | :--- | :--- |
 | **Timer 0** | $1000\text{ms}$ | $1\text{Hz}$ | **Clock Logic** (Update second, minute, hour) |
 | **Timer 1** | $1000\text{ms}$ | $1\text{Hz}$ | **Blink Logic** (Toggle DOT/LED Red) |
