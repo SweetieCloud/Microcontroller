@@ -1,4 +1,4 @@
-# Exercise 5: Digital Clock (HH:MM) Implementation 
+# Exercise 5: Digital Clock Implementation 
 
 ## 1. Requirements
 The goal of this exercise is to implement a **24-hour digital clock** displaying **Hour** and **Minute** in the `HH:MM` format on the **4 LED 7-segment display**.  
