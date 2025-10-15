@@ -19,7 +19,8 @@ Hàm này được gọi mỗi giây trong vòng lặp `while(1)` để tính to
 
 | Hàm | Mục đích | Source Code (từ `main.c`) |
 | :--- | :--- | :--- |
-| **`updateClockBuffer()`** | Cập nhật mảng `led_buffer` dựa trên biến `hour` và `minute`. | ```c
+| **`updateClockBuffer()`** | Cập nhật mảng `led_buffer` dựa trên biến `hour` và `minute`. | 
+```c
 void updateClockBuffer(void) {
     // 1. Xử lý Giờ (HH)
     led_buffer[0] = hour / 10;
