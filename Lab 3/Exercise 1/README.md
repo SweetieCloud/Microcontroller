@@ -1,4 +1,6 @@
-| **`timer_run()`** | Cập nhật (giảm đếm) tất cả các Software Timer đang hoạt động. Hàm này được gọi trong ngắt 10ms. | ```c
+**`timer_run()`** 
+Cập nhật (giảm đếm) tất cả các Software Timer đang hoạt động. Hàm này được gọi trong ngắt 10ms. 
+```c
 void timer_run (){
     for (int i = 0; i < NO_OF_TIMERS; i++) {
         if( timer_counter[i] > 0){
@@ -7,7 +9,7 @@ void timer_run (){
         }
     }
 }
-``` |
+``` 
 
 ---
 
