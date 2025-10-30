@@ -13,7 +13,9 @@ This project is an application for a traffic light system at a crossroad, implem
     3.  **Set Button:** To confirm and set the chosen value.
 
 ### 2. Functional Requirements
+
 The application has 4 modes, controlled by the **Mode Button**. Pressing this button cycles through the modes from 1 to 4 and back to 1.
+
 ---
 
 #### 💠 Mode 1: Normal Mode
