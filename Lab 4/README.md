@@ -18,7 +18,7 @@ The core of this lab is the scheduler library (`scheduler.c` and `scheduler.h`).
 The scheduler provides a public API for adding, deleting, and running tasks :
 * **`void SCH_Init(void)`:** Initializes all internal data structures, including the Task Pool and the Node Pool for the linked list.
 
-* **uint32_t SCH_Add_Task(void (*pFunction)(), uint32_t DELAY, uint32_t PERIOD):** Adds a new task to the scheduler. It takes a function pointer, an initial delay, and a periodic interval. It returns a `TaskID` for future reference.
+* **`uint32_t SCH_Add_Task(void (*pFunction)(), uint32_t DELAY, uint32_t PERIOD)`:** Adds a new task to the scheduler. It takes a function pointer, an initial delay, and a periodic interval. It returns a `TaskID` for future reference.
 
 * **`uint8_t SCH_Delete_Task(uint32_t taskID)`:** Safely removes a task from the scheduler using its TaskID.
 
@@ -46,7 +46,7 @@ To prove the scheduler's functionality, the `main.c` file implements 5 concurren
 
 * **Concurrent Tasks:** 5 LED-blinking tasks are added to the scheduler with different periods:
 
-Task 1: 0.5s (50 ticks)
+* * Task 1: 0.5s (50 ticks)
 
 Task 2: 1.0s (100 ticks)
 
