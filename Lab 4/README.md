@@ -46,12 +46,12 @@ To prove the scheduler's functionality, the `main.c` file implements 5 concurren
 
 * **Concurrent Tasks:** 5 LED-blinking tasks are added to the scheduler with different periods:
 
-  *Task 1: 0.5s (50 ticks)
+  - Task 1: 0.5s (50 ticks)
 
-  *Task 2: 1.0s (100 ticks)
+  - Task 2: 1.0s (100 ticks)
 
-Task 3: 1.5s (150 ticks)
+  - Task 3: 1.5s (150 ticks)
 
-Task 4: 2.0s (200 ticks)
+  - Task 4: 2.0s (200 ticks)
 
-Task 5: 2.5s (250 ticks)
+  - Task 5: 2.5s (250 ticks)
